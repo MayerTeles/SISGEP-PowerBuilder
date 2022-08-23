@@ -1,0 +1,235 @@
+﻿$PBExportHeader$m_cadastro.srm
+forward
+global type m_cadastro from m_ancestral
+end type
+end forward
+
+global type m_cadastro from m_ancestral
+end type
+global m_cadastro m_cadastro
+
+on m_cadastro.create
+m_cadastro=this
+call super::create
+end on
+
+on m_cadastro.destroy
+call super::destroy
+end on
+
+type m_arquivo from m_ancestral`m_arquivo within m_cadastro
+end type
+
+on m_arquivo.create
+call super::create
+end on
+
+on m_arquivo.destroy
+call super::destroy
+end on
+
+type m_exportardados from m_ancestral`m_exportardados within m_arquivo
+end type
+
+on m_exportardados.create
+call super::create
+end on
+
+on m_exportardados.destroy
+call super::destroy
+end on
+
+type m_sair from m_ancestral`m_sair within m_arquivo
+end type
+
+on m_sair.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_sair.destroy
+call super::destroy
+end on
+
+type m_gravacao from m_ancestral`m_gravacao within m_cadastro
+end type
+
+on m_gravacao.create
+call super::create
+end on
+
+on m_gravacao.destroy
+call super::destroy
+end on
+
+type m_inserir from m_ancestral`m_inserir within m_gravacao
+end type
+
+on m_inserir.create
+call super::create
+end on
+
+on m_inserir.destroy
+call super::destroy
+end on
+
+type m_adicionar from m_ancestral`m_adicionar within m_gravacao
+end type
+
+on m_adicionar.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_adicionar.destroy
+call super::destroy
+end on
+
+type m_excluir from m_ancestral`m_excluir within m_gravacao
+end type
+
+on m_excluir.create
+call super::create
+this.tag = "Excluir"
+this.microhelp = "Excluir"
+this.toolbaritemvisible = true
+this.toolbaritemname = "Delete!"
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_excluir.destroy
+call super::destroy
+end on
+
+type m_recuperar from m_ancestral`m_recuperar within m_gravacao
+end type
+
+on m_recuperar.create
+call super::create
+this.tag = "Alterar"
+this.microhelp = "Alterar"
+this.toolbaritemvisible = true
+this.toolbaritemname = "Retrieve1!"
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_recuperar.destroy
+call super::destroy
+end on
+
+type m_gravar from m_ancestral`m_gravar within m_gravacao
+end type
+
+on m_gravar.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemname = "Save!"
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_gravar.destroy
+call super::destroy
+end on
+
+type m_exportar from m_ancestral`m_exportar within m_gravacao
+end type
+
+on m_exportar.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_exportar.destroy
+call super::destroy
+end on
+
+type m_abandonar from m_ancestral`m_abandonar within m_gravacao
+end type
+
+on m_abandonar.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemdown = true
+end on
+
+on m_abandonar.destroy
+call super::destroy
+end on
+
+type m_alterar from m_ancestral`m_alterar within m_gravacao
+end type
+
+on m_alterar.create
+call super::create
+this.enabled = true
+this.toolbaritemvisible = true
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_alterar.destroy
+call super::destroy
+end on
+
+type m_manutencao from m_ancestral`m_manutencao within m_cadastro
+end type
+
+on m_manutencao.create
+call super::create
+end on
+
+on m_manutencao.destroy
+call super::destroy
+end on
+
+type m_cadastrarproduto from m_ancestral`m_cadastrarproduto within m_manutencao
+end type
+
+on m_cadastrarproduto.create
+call super::create
+end on
+
+on m_cadastrarproduto.destroy
+call super::destroy
+end on
+
+type m_consulta from m_ancestral`m_consulta within m_cadastro
+end type
+
+on m_consulta.create
+call super::create
+end on
+
+on m_consulta.destroy
+call super::destroy
+end on
+
+type m_janela from m_ancestral`m_janela within m_cadastro
+end type
+
+on m_janela.create
+call super::create
+end on
+
+on m_janela.destroy
+call super::destroy
+end on
+
+type m_ajuda from m_ancestral`m_ajuda within m_cadastro
+end type
+
+on m_ajuda.create
+call super::create
+end on
+
+on m_ajuda.destroy
+call super::destroy
+end on
+
