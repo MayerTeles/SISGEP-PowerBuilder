@@ -12,7 +12,7 @@ end type
 end forward
 
 global type w_manutencao from window
-integer width = 3803
+integer width = 4256
 integer height = 1660
 boolean titlebar = true
 string menuname = "m_ancestral"
@@ -49,9 +49,12 @@ protected:
 boolean ib_AjustarLarguraDw = false
 boolean ib_AjustarAlturaDw = false
 
+w_manutencao Tela
+
 
 
 end variables
+
 forward prototypes
 public function integer of_arearegulo (integer lado, integer altura)
 public function integer wf_janela ()
@@ -270,13 +273,14 @@ end if
 
 end event
 
-event resize;
+event resize;Tela = Create w_manutencao
+
 if (ib_AjustarLarguraDw) then
-	dw_manutencao.width = newWidth - dw_manutencao.x - dw_manutencao.x
+	dw_manutencao.width = newWidth - Tela.x - Tela.x
 end if
 
 if (ib_AjustarAlturaDw) then
-	dw_manutencao.height = newHeight - dw_manutencao.y - dw_manutencao.y
+	dw_manutencao.height = newHeight - Tela.y - Tela.y
 end if
 
 return

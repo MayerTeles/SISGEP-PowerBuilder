@@ -26,7 +26,7 @@ SELECT
 		return -1
 	end if
 	
-	if SQLCA.sqlcode = 0 Then return 1
+	if isnull(vll_Cod_produto) Then return 1
 		
 	return vll_Cod_Produto + 1
 	
