@@ -5,7 +5,12 @@ end type
 end forward
 
 global type w_consulta_produto from w_manutencao
+integer width = 3575
 string menuname = "m_consultas"
+long backcolor = 15780518
+windowanimationstyle closeanimation = rightroll!
+boolean ib_ajustarlarguradw = true
+boolean ib_ajustaralturadw = true
 end type
 global w_consulta_produto w_consulta_produto
 
@@ -46,19 +51,6 @@ end event
 event ue_inicializacao;call super::ue_inicializacao;dw_manutencao.visible = False
 end event
 
-event resize;call super::resize;Tela = Create w_manutencao
-
-if (ib_AjustarLarguraDw) then
-	dw_manutencao.width = newWidth - Telas.x - Telas.x
-end if
-
-if (ib_AjustarAlturaDw) then
-	dw_manutencao.height = newHeight - Telas.y - Telas.y
-end if
-
-return
-end event
-
 type mle_filtro from w_manutencao`mle_filtro within w_consulta_produto
 integer x = 2926
 integer y = 80
@@ -73,9 +65,10 @@ end type
 type dw_manutencao from w_manutencao`dw_manutencao within w_consulta_produto
 boolean visible = false
 integer y = 136
-integer width = 4192
+integer width = 2770
 integer height = 1332
 string dataobject = "dw_consulta_produto"
-boolean resizable = true
+boolean livescroll = false
+borderstyle borderstyle = stylebox!
 end type
 

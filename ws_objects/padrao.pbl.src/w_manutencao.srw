@@ -12,7 +12,7 @@ end type
 end forward
 
 global type w_manutencao from window
-integer width = 4256
+integer width = 2651
 integer height = 1660
 boolean titlebar = true
 string menuname = "m_ancestral"
@@ -48,8 +48,6 @@ type variables
 protected:
 boolean ib_AjustarLarguraDw = false
 boolean ib_AjustarAlturaDw = false
-
-w_manutencao Tela
 
 
 
@@ -273,14 +271,13 @@ end if
 
 end event
 
-event resize;Tela = Create w_manutencao
-
+event resize;
 if (ib_AjustarLarguraDw) then
-	dw_manutencao.width = newWidth - Tela.x - Tela.x
+	dw_manutencao.width = this.width
 end if
 
 if (ib_AjustarAlturaDw) then
-	dw_manutencao.height = newHeight - Tela.y - Tela.y
+	dw_manutencao.height = this.height
 end if
 
 return
@@ -290,8 +287,8 @@ end event
 
 type mle_filtro from multilineedit within w_manutencao
 boolean visible = false
-integer x = 2514
-integer y = 168
+integer x = 1449
+integer y = 60
 integer width = 480
 integer height = 116
 integer taborder = 20
@@ -314,7 +311,7 @@ type dw_manutencao from uo_datawindow_ancestral within w_manutencao
 event ue_eventodw ( )
 integer x = 32
 integer y = 280
-integer width = 3721
+integer width = 2414
 integer height = 1196
 integer taborder = 20
 boolean hscrollbar = true

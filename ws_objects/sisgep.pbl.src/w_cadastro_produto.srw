@@ -8,6 +8,7 @@ global type w_cadastro_produto from w_manutencao
 integer width = 3959
 integer height = 1684
 string menuname = "m_cadastro"
+long backcolor = 15780518
 boolean ib_ajustarlarguradw = true
 boolean ib_ajustaralturadw = true
 end type
