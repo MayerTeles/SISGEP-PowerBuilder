@@ -188,6 +188,28 @@ on m_consulta.destroy
 call super::destroy
 end on
 
+type m_produtosemestoque from m_ancestral`m_produtosemestoque within m_consulta
+end type
+
+on m_produtosemestoque.create
+call super::create
+end on
+
+on m_produtosemestoque.destroy
+call super::destroy
+end on
+
+type m_porcódigo from m_ancestral`m_porcódigo within m_produtosemestoque
+end type
+
+on m_porcódigo.create
+call super::create
+end on
+
+on m_porcódigo.destroy
+call super::destroy
+end on
+
 type m_janela from m_ancestral`m_janela within m_consultas
 end type
 

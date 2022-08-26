@@ -32,11 +32,11 @@ end on
 event ue_recuperar;call super::ue_recuperar;string vlsNome
 String vlsFiltro
 
+dw_get.accepttext( )
 vlsNome = dw_get.GetItemString(1,'nome')
 
 if not isnull(vlsNome) Then
-	vlsFiltro = 'produto_nome Like %'+vlsNome+'%'
-
+	vlsFiltro = 'produto.nome LIKE "%'+ vlsNome+'%"'
 end if
 
 dw_manutencao.Retrieve()
