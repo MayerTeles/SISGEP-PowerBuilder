@@ -1,0 +1,15 @@
+﻿$PBExportHeader$p_sisgep_exe.srj
+$PBExportComments$Generated Application Executable Project
+EXE:sisgep.exe,,0,0,1,0,C:\Program Files (x86)\Appeon\Common\PowerBuilder\Runtime 19.2.0.2728
+CMP:0,0,0,2,0,0,1
+COM:Appeon
+DES:Appeon Product File
+CPY:
+PRD:PowerBuilder Enterprise Series
+PVS:1.0.0.1
+PVN:1,0,0,1
+FVS:1.0.0.1
+FVN:1,0,0,1
+MAN:0,asInvoker,0
+PBD:sisgep.pbl,,0
+PBD:padrao.pbl,,0
