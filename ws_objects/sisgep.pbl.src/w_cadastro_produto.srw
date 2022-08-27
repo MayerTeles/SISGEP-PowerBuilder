@@ -181,6 +181,9 @@ dw_get.object.cod_produto.protect = 1
 dw_manutencao.object.produto_cod_produto.protect = 1
 end event
 
+event ue_abandonar;call super::ue_abandonar;dw_get.object.cod_produto.protect = 0
+end event
+
 type mle_filtro from w_manutencao`mle_filtro within w_cadastro_produto
 integer x = 2039
 integer y = 0

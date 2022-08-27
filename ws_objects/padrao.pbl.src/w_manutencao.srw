@@ -207,7 +207,6 @@ dw_manutencao.visible = false
 dw_get.reset()
 dw_get.SetColumn(1)
 dw_get.InsertRow(0)
-dw_get.object.cod_produto.protect = 0
 end event
 
 public function integer of_arearegulo (integer lado, integer altura);long Area
@@ -273,11 +272,11 @@ end event
 
 event resize;
 if (ib_AjustarLarguraDw) then
-	dw_manutencao.width = this.width
+	dw_manutencao.width = newwidth - this.x - this.x
 end if
 
 if (ib_AjustarAlturaDw) then
-	dw_manutencao.height = this.height
+	dw_manutencao.height = newheight - this.y - this.y
 end if
 
 return

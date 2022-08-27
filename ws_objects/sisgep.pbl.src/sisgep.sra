@@ -12,6 +12,9 @@ end forward
 
 global variables
 String VGS_Menu
+string VGS_Nome
+String VGS_Cargo
+Long VGL_matricula
 end variables
 global type sisgep from application
 string appname = "sisgep"
@@ -46,9 +49,7 @@ destroy(error)
 destroy(message)
 end on
 
-event open;Open(w_mdi_ancestral)
-
-// Profile Estoque
+event open;// Profile Estoque
 SQLCA.DBMS = "ADO.Net"
 SQLCA.AutoCommit = False
 SQLCA.DBParm = "Namespace='System.Data.SqlClient',TrustedConnection=1,DataSource='DESKTOP-C4Q9Q0U\SQLEXPRESS',Database='estoque_sisgep'"
@@ -61,6 +62,8 @@ Choose Case SQLCA.sqlcode
 		messageBox('Falha na Conexão',SQLCA.sqlErrtext,Stopsign!)
 		Return
 end choose
+
+Open(w_login)
 
 
 

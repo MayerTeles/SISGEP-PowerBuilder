@@ -34,6 +34,11 @@ String vlsFiltro
 
 vllcodproduto = dw_get.GetItemNumber(1,'cod_produto')
 
+if dw_manutencao.visible Then
+	MessageBox('Atenção','Favor Abandonar a consulta para realizar outra!')
+	Return
+End if
+
 if not isnull(vllCodProduto) Then
 	vlsFiltro = 'Produto_Cod_produto = '+string(vllcodproduto)
 
@@ -44,11 +49,15 @@ dw_manutencao.visible = true
 dw_manutencao.setFilter(vlsFiltro)
 dw_manutencao.filter()
 
+dw_get.object.cod_produto.protect = 1
 
 
 end event
 
 event ue_inicializacao;call super::ue_inicializacao;dw_manutencao.visible = False
+end event
+
+event ue_abandonar;call super::ue_abandonar;dw_get.object.cod_produto.protect = 0
 end event
 
 type mle_filtro from w_manutencao`mle_filtro within w_consulta_produto

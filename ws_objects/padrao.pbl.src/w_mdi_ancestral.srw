@@ -8,8 +8,8 @@ end type
 end forward
 
 global type w_mdi_ancestral from window
-integer width = 3803
-integer height = 1660
+integer width = 4878
+integer height = 2240
 boolean titlebar = true
 string menuname = "m_ancestral"
 boolean controlmenu = true
@@ -18,7 +18,7 @@ boolean maxbox = true
 boolean resizable = true
 windowtype windowtype = mdihelp!
 windowstate windowstate = maximized!
-long backcolor = 15793151
+long backcolor = 0
 string icon = "AppIcon!"
 boolean center = true
 mdi_1 mdi_1

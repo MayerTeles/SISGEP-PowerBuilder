@@ -56,9 +56,12 @@ type m_porcódigo from menu within m_produtosemestoque
 end type
 type m_pornome from menu within m_produtosemestoque
 end type
+type m_pormarca from menu within m_produtosemestoque
+end type
 type m_produtosemestoque from menu within m_consulta
 m_porcódigo m_porcódigo
 m_pornome m_pornome
+m_pormarca m_pormarca
 end type
 type m_consulta from menu within m_ancestral
 m_produtosemestoque m_produtosemestoque
@@ -685,6 +688,7 @@ end on
 type m_produtosemestoque from menu within m_consulta
 m_porcódigo m_porcódigo
 m_pornome m_pornome
+m_pormarca m_pormarca
 end type
 
 on m_produtosemestoque.create
@@ -707,14 +711,17 @@ this.toolbargradient = true
 this.bitmapgradient = true
 this.m_porcódigo=create m_porcódigo
 this.m_pornome=create m_pornome
+this.m_pormarca=create m_pormarca
 this.Item[UpperBound(this.Item)+1]=this.m_porcódigo
 this.Item[UpperBound(this.Item)+1]=this.m_pornome
+this.Item[UpperBound(this.Item)+1]=this.m_pormarca
 end on
 
 on m_produtosemestoque.destroy
 call super::destroy
 destroy(this.m_porcódigo)
 destroy(this.m_pornome)
+destroy(this.m_pormarca)
 end on
 
 type m_porcódigo from menu within m_produtosemestoque
@@ -776,6 +783,36 @@ end on
 
 event clicked;OpenSheetWithParm(w_consulta_produto_nome, Mid(This.Text,5) + ',' + This.ClassName(), w_mdi_ancestral, 0, Layered!)
 end event
+
+type m_pormarca from menu within m_produtosemestoque
+end type
+
+event clicked;OpenSheetWithParm(w_consulta_produto_marca, Mid(This.Text,5) + ',' + This.ClassName(), w_mdi_ancestral, 0, Layered!)
+end event
+
+on m_pormarca.create
+call super::create
+this.text = "Por Marca"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_pormarca.destroy
+call super::destroy
+end on
 
 type m_janela from menu within m_ancestral
 end type
