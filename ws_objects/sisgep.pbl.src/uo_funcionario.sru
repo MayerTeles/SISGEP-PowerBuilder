@@ -14,6 +14,7 @@ end variables
 
 forward prototypes
 public function long of_existe (string p_usuario, string p_senha)
+public function integer of_proximo ()
 end prototypes
 
 public function long of_existe (string p_usuario, string p_senha);
@@ -42,6 +43,27 @@ if VGL_matricula = 0 Then
 	return 0
 end if
 return 1
+end function
+
+public function integer of_proximo ();
+Long Vll_matricula
+
+SELECT 
+	MAX(funcionario.cod_matricula)
+	INTO 
+	:Vll_matricula
+	From funcionario
+	Using SQLCA;
+	
+	if SQLCA.sqlcode < 0 Then
+		MessageBox('Erro ao Buscar Sequencial do Produto!', sqlca.sqlerrtext,Stopsign!)
+		return -1
+	end if
+	
+	if isnull(Vll_matricula) Then return 1
+		
+	return Vll_matricula + 1
+	
 end function
 
 on uo_funcionario.create

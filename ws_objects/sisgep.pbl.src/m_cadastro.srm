@@ -130,8 +130,6 @@ end type
 
 on m_exportar.create
 call super::create
-this.toolbaritemvisible = true
-this.toolbaritemdown = true
 this.mergeoption = windowmenu!
 end on
 
@@ -186,6 +184,17 @@ call super::create
 end on
 
 on m_cadastrarproduto.destroy
+call super::destroy
+end on
+
+type m_cadastrarfuncinário from m_ancestral`m_cadastrarfuncinário within m_manutencao
+end type
+
+on m_cadastrarfuncinário.create
+call super::create
+end on
+
+on m_cadastrarfuncinário.destroy
 call super::destroy
 end on
 

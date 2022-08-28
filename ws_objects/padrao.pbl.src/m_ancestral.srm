@@ -42,8 +42,11 @@ type m_manutencao from menu within m_ancestral
 end type
 type m_cadastrarproduto from menu within m_manutencao
 end type
+type m_cadastrarfuncinário from menu within m_manutencao
+end type
 type m_manutencao from menu within m_ancestral
 m_cadastrarproduto m_cadastrarproduto
+m_cadastrarfuncinário m_cadastrarfuncinário
 end type
 type m_consulta from menu within m_ancestral
 end type
@@ -546,6 +549,7 @@ end on
 
 type m_manutencao from menu within m_ancestral
 m_cadastrarproduto m_cadastrarproduto
+m_cadastrarfuncinário m_cadastrarfuncinário
 end type
 
 on m_manutencao.create
@@ -567,12 +571,15 @@ this.toolbarhighlightcolor = 134217741
 this.toolbargradient = true
 this.bitmapgradient = true
 this.m_cadastrarproduto=create m_cadastrarproduto
+this.m_cadastrarfuncinário=create m_cadastrarfuncinário
 this.Item[UpperBound(this.Item)+1]=this.m_cadastrarproduto
+this.Item[UpperBound(this.Item)+1]=this.m_cadastrarfuncinário
 end on
 
 on m_manutencao.destroy
 call super::destroy
 destroy(this.m_cadastrarproduto)
+destroy(this.m_cadastrarfuncinário)
 end on
 
 type m_cadastrarproduto from menu within m_manutencao
@@ -605,6 +612,37 @@ end on
 event clicked;
 OpenSheetWithParm(w_cadastro_produto, Mid(This.Text,5) + ',' + This.ClassName(), w_mdi_ancestral, 0, Layered!)
 end event
+
+type m_cadastrarfuncinário from menu within m_manutencao
+end type
+
+event clicked;
+OpenSheetWithParm(w_cadastro_funcionario, Mid(This.Text,5) + ',' + This.ClassName(), w_mdi_ancestral, 0, Layered!)
+end event
+
+on m_cadastrarfuncinário.create
+call super::create
+this.text = "Cadastrar Funcionário"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cadastrarfuncinário.destroy
+call super::destroy
+end on
 
 type m_consulta from menu within m_ancestral
 m_produtosemestoque m_produtosemestoque
