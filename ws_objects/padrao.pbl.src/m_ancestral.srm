@@ -5,12 +5,9 @@ global type m_ancestral from menu
 end type
 type m_arquivo from menu within m_ancestral
 end type
-type m_exportardados from menu within m_arquivo
-end type
 type m_sair from menu within m_arquivo
 end type
 type m_arquivo from menu within m_ancestral
-m_exportardados m_exportardados
 m_sair m_sair
 end type
 type m_gravacao from menu within m_ancestral
@@ -66,17 +63,11 @@ end type
 type m_consulta from menu within m_ancestral
 m_produtosemestoque m_produtosemestoque
 end type
-type m_janela from menu within m_ancestral
-end type
-type m_ajuda from menu within m_ancestral
-end type
 global type m_ancestral from menu
 m_arquivo m_arquivo
 m_gravacao m_gravacao
 m_manutencao m_manutencao
 m_consulta m_consulta
-m_janela m_janela
-m_ajuda m_ajuda
 end type
 end forward
 
@@ -85,8 +76,6 @@ m_arquivo m_arquivo
 m_gravacao m_gravacao
 m_manutencao m_manutencao
 m_consulta m_consulta
-m_janela m_janela
-m_ajuda m_ajuda
 end type
 global m_ancestral m_ancestral
 
@@ -113,14 +102,10 @@ this.m_arquivo=create m_arquivo
 this.m_gravacao=create m_gravacao
 this.m_manutencao=create m_manutencao
 this.m_consulta=create m_consulta
-this.m_janela=create m_janela
-this.m_ajuda=create m_ajuda
 this.Item[UpperBound(this.Item)+1]=this.m_arquivo
 this.Item[UpperBound(this.Item)+1]=this.m_gravacao
 this.Item[UpperBound(this.Item)+1]=this.m_manutencao
 this.Item[UpperBound(this.Item)+1]=this.m_consulta
-this.Item[UpperBound(this.Item)+1]=this.m_janela
-this.Item[UpperBound(this.Item)+1]=this.m_ajuda
 end on
 
 on m_ancestral.destroy
@@ -129,12 +114,9 @@ destroy(this.m_arquivo)
 destroy(this.m_gravacao)
 destroy(this.m_manutencao)
 destroy(this.m_consulta)
-destroy(this.m_janela)
-destroy(this.m_ajuda)
 end on
 
 type m_arquivo from menu within m_ancestral
-m_exportardados m_exportardados
 m_sair m_sair
 end type
 
@@ -156,43 +138,13 @@ this.toolbarbackcolor = 67108864
 this.toolbarhighlightcolor = 134217741
 this.toolbargradient = true
 this.bitmapgradient = true
-this.m_exportardados=create m_exportardados
 this.m_sair=create m_sair
-this.Item[UpperBound(this.Item)+1]=this.m_exportardados
 this.Item[UpperBound(this.Item)+1]=this.m_sair
 end on
 
 on m_arquivo.destroy
 call super::destroy
-destroy(this.m_exportardados)
 destroy(this.m_sair)
-end on
-
-type m_exportardados from menu within m_arquivo
-end type
-
-on m_exportardados.create
-call super::create
-this.text = "Exportar Dados"
-this.menutextcolor = 134217735
-this.menubackcolor = 134217732
-this.menuhighlightcolor = 134217741
-this.textsize = 8
-this.weight = 400
-this.facename = "Tahoma"
-this.titlebackcolor = 134217730
-this.bitmapbackcolor = 12632256
-this.menubitmaps = true
-this.titlegradient = true
-this.toolbartextcolor = 134217746
-this.toolbarbackcolor = 67108864
-this.toolbarhighlightcolor = 134217741
-this.toolbargradient = true
-this.bitmapgradient = true
-end on
-
-on m_exportardados.destroy
-call super::destroy
 end on
 
 type m_sair from menu within m_arquivo
@@ -811,60 +763,6 @@ this.bitmapgradient = true
 end on
 
 on m_pormarca.destroy
-call super::destroy
-end on
-
-type m_janela from menu within m_ancestral
-end type
-
-on m_janela.create
-call super::create
-this.text = "Janela"
-this.menutextcolor = 134217735
-this.menubackcolor = 134217732
-this.menuhighlightcolor = 134217741
-this.textsize = 8
-this.weight = 400
-this.facename = "Tahoma"
-this.titlebackcolor = 134217730
-this.bitmapbackcolor = 12632256
-this.menubitmaps = true
-this.titlegradient = true
-this.toolbartextcolor = 134217746
-this.toolbarbackcolor = 67108864
-this.toolbarhighlightcolor = 134217741
-this.toolbargradient = true
-this.bitmapgradient = true
-end on
-
-on m_janela.destroy
-call super::destroy
-end on
-
-type m_ajuda from menu within m_ancestral
-end type
-
-on m_ajuda.create
-call super::create
-this.text = "Ajuda"
-this.menutextcolor = 134217735
-this.menubackcolor = 134217732
-this.menuhighlightcolor = 134217741
-this.textsize = 8
-this.weight = 400
-this.facename = "Tahoma"
-this.titlebackcolor = 134217730
-this.bitmapbackcolor = 12632256
-this.menubitmaps = true
-this.titlegradient = true
-this.toolbartextcolor = 134217746
-this.toolbarbackcolor = 67108864
-this.toolbarhighlightcolor = 134217741
-this.toolbargradient = true
-this.bitmapgradient = true
-end on
-
-on m_ajuda.destroy
 call super::destroy
 end on
 

@@ -50,9 +50,7 @@ boolean ib_AjustarLarguraDw = false
 boolean ib_AjustarAlturaDw = false
 
 
-
 end variables
-
 forward prototypes
 public function integer of_arearegulo (integer lado, integer altura)
 public function integer wf_janela ()
@@ -153,7 +151,6 @@ return
 end event
 
 event ue_inicializacao();long ll_QtdLinha							// quantidade de linha recuperadas
-
 
 // o comando SetTransObject associa a datawindow com a conexão. Se esse comando o Powerbuilder não sabe de onde os dados
 // serão lidos. Desta forma, se uma janela (window) possuir mais de uma datawindow, nada impede que cada uma dela seja

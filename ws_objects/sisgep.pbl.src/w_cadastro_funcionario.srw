@@ -1,10 +1,10 @@
-﻿$PBExportHeader$w_cadastro_produto.srw
+﻿$PBExportHeader$w_cadastro_funcionario.srw
 forward
-global type w_cadastro_produto from w_manutencao
+global type w_cadastro_funcionario from w_manutencao
 end type
 end forward
 
-global type w_cadastro_produto from w_manutencao
+global type w_cadastro_funcionario from w_manutencao
 integer width = 3959
 integer height = 1684
 string menuname = "m_cadastro"
@@ -13,7 +13,7 @@ string icon = "AppIcon!"
 boolean ib_ajustarlarguradw = true
 boolean ib_ajustaralturadw = true
 end type
-global w_cadastro_produto w_cadastro_produto
+global w_cadastro_funcionario w_cadastro_funcionario
 
 type variables
 uo_produto	uoi_produto
@@ -23,13 +23,13 @@ Long Vil_Cod_Produto
 Long Vil_quantidade
 end variables
 
-on w_cadastro_produto.create
+on w_cadastro_funcionario.create
 call super::create
 if IsValid(this.MenuID) then destroy(this.MenuID)
 if this.MenuName = "m_cadastro" then this.MenuID = create m_cadastro
 end on
 
-on w_cadastro_produto.destroy
+on w_cadastro_funcionario.destroy
 call super::destroy
 if IsValid(MenuID) then destroy(MenuID)
 end on
@@ -185,25 +185,25 @@ end event
 event ue_abandonar;call super::ue_abandonar;dw_get.object.cod_produto.protect = 0
 end event
 
-type mle_filtro from w_manutencao`mle_filtro within w_cadastro_produto
+type mle_filtro from w_manutencao`mle_filtro within w_cadastro_funcionario
 integer x = 2039
 integer y = 0
 integer width = 1312
 integer height = 144
 end type
 
-type dw_get from w_manutencao`dw_get within w_cadastro_produto
+type dw_get from w_manutencao`dw_get within w_cadastro_funcionario
 integer width = 928
 integer height = 140
-string dataobject = "dw_get_produto"
+string dataobject = "dw_get_funcionario"
 end type
 
-type dw_manutencao from w_manutencao`dw_manutencao within w_cadastro_produto
+type dw_manutencao from w_manutencao`dw_manutencao within w_cadastro_funcionario
 boolean visible = false
 integer y = 160
 integer width = 3013
 integer height = 1324
-string dataobject = "dw_cadastro_produto"
+string dataobject = "dw_cadastro_funcionario"
 boolean hsplitscroll = true
 end type
 
