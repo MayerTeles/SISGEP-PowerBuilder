@@ -67,7 +67,12 @@ end type
 
 on m_adicionar.create
 call super::create
+this.tag = "AdicionarAlt + F1"
+this.text = "Adicionar~tAlt+F1"
+this.shortcut = 624
+this.microhelp = "AdicionarAlt + F1"
 this.toolbaritemvisible = true
+this.toolbaritemtext = "AdicionarAlt + F1"
 this.toolbaritemdown = true
 this.mergeoption = windowmenu!
 end on
@@ -76,15 +81,38 @@ on m_adicionar.destroy
 call super::destroy
 end on
 
+type m_alterar from m_ancestral`m_alterar within m_gravacao
+end type
+
+on m_alterar.create
+call super::create
+this.tag = "Alterar Alt+F2"
+this.text = "Alterar~tAlt+F2"
+this.enabled = true
+this.shortcut = 625
+this.microhelp = "Alterar Alt+F2"
+this.toolbaritemvisible = true
+this.toolbaritemtext = "Alterar Alt+F2"
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_alterar.destroy
+call super::destroy
+end on
+
 type m_excluir from m_ancestral`m_excluir within m_gravacao
 end type
 
 on m_excluir.create
 call super::create
-this.tag = "Excluir"
-this.microhelp = "Excluir"
+this.tag = "Excluir Alt+F3"
+this.text = "Excluir~tAlt+F3"
+this.shortcut = 626
+this.microhelp = "Excluir Alt+F3"
 this.toolbaritemvisible = true
 this.toolbaritemname = "Delete!"
+this.toolbaritemtext = "Excluir Alt+F3"
 this.toolbaritemdown = true
 this.mergeoption = windowmenu!
 end on
@@ -98,15 +126,32 @@ end type
 
 on m_recuperar.create
 call super::create
-this.tag = "Alterar"
-this.microhelp = "Alterar"
+this.tag = "Recuperar Alt+F4"
+this.text = "Recuperar~tAlt+F4"
+this.shortcut = 627
+this.microhelp = "Recuperar Alt+F4"
 this.toolbaritemvisible = true
 this.toolbaritemname = "Retrieve1!"
+this.toolbaritemtext = "RecuperarAlt+F4"
 this.toolbaritemdown = true
 this.mergeoption = windowmenu!
 end on
 
 on m_recuperar.destroy
+call super::destroy
+end on
+
+type m_abandonar from m_ancestral`m_abandonar within m_gravacao
+end type
+
+on m_abandonar.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemspace = 8
+this.toolbaritemdown = true
+end on
+
+on m_abandonar.destroy
 call super::destroy
 end on
 
@@ -134,34 +179,6 @@ this.mergeoption = windowmenu!
 end on
 
 on m_exportar.destroy
-call super::destroy
-end on
-
-type m_abandonar from m_ancestral`m_abandonar within m_gravacao
-end type
-
-on m_abandonar.create
-call super::create
-this.toolbaritemvisible = true
-this.toolbaritemdown = true
-end on
-
-on m_abandonar.destroy
-call super::destroy
-end on
-
-type m_alterar from m_ancestral`m_alterar within m_gravacao
-end type
-
-on m_alterar.create
-call super::create
-this.enabled = true
-this.toolbaritemvisible = true
-this.toolbaritemdown = true
-this.mergeoption = windowmenu!
-end on
-
-on m_alterar.destroy
 call super::destroy
 end on
 

@@ -16,27 +16,27 @@ type m_inserir from menu within m_gravacao
 end type
 type m_adicionar from menu within m_gravacao
 end type
+type m_alterar from menu within m_gravacao
+end type
 type m_excluir from menu within m_gravacao
 end type
 type m_recuperar from menu within m_gravacao
+end type
+type m_abandonar from menu within m_gravacao
 end type
 type m_gravar from menu within m_gravacao
 end type
 type m_exportar from menu within m_gravacao
 end type
-type m_abandonar from menu within m_gravacao
-end type
-type m_alterar from menu within m_gravacao
-end type
 type m_gravacao from menu within m_ancestral
 m_inserir m_inserir
 m_adicionar m_adicionar
+m_alterar m_alterar
 m_excluir m_excluir
 m_recuperar m_recuperar
+m_abandonar m_abandonar
 m_gravar m_gravar
 m_exportar m_exportar
-m_abandonar m_abandonar
-m_alterar m_alterar
 end type
 type m_manutencao from menu within m_ancestral
 end type
@@ -44,9 +44,12 @@ type m_cadastrarproduto from menu within m_manutencao
 end type
 type m_cadastrarfuncinário from menu within m_manutencao
 end type
+type m_cadastrarvenda from menu within m_manutencao
+end type
 type m_manutencao from menu within m_ancestral
 m_cadastrarproduto m_cadastrarproduto
 m_cadastrarfuncinário m_cadastrarfuncinário
+m_cadastrarvenda m_cadastrarvenda
 end type
 type m_consulta from menu within m_ancestral
 end type
@@ -63,8 +66,11 @@ m_porcódigo m_porcódigo
 m_pornome m_pornome
 m_pormarca m_pormarca
 end type
+type m_funcionário from menu within m_consulta
+end type
 type m_consulta from menu within m_ancestral
 m_produtosemestoque m_produtosemestoque
+m_funcionário m_funcionário
 end type
 global type m_ancestral from menu
 m_arquivo m_arquivo
@@ -185,12 +191,12 @@ end event
 type m_gravacao from menu within m_ancestral
 m_inserir m_inserir
 m_adicionar m_adicionar
+m_alterar m_alterar
 m_excluir m_excluir
 m_recuperar m_recuperar
+m_abandonar m_abandonar
 m_gravar m_gravar
 m_exportar m_exportar
-m_abandonar m_abandonar
-m_alterar m_alterar
 end type
 
 on m_gravacao.create
@@ -214,32 +220,32 @@ this.toolbargradient = true
 this.bitmapgradient = true
 this.m_inserir=create m_inserir
 this.m_adicionar=create m_adicionar
+this.m_alterar=create m_alterar
 this.m_excluir=create m_excluir
 this.m_recuperar=create m_recuperar
+this.m_abandonar=create m_abandonar
 this.m_gravar=create m_gravar
 this.m_exportar=create m_exportar
-this.m_abandonar=create m_abandonar
-this.m_alterar=create m_alterar
 this.Item[UpperBound(this.Item)+1]=this.m_inserir
 this.Item[UpperBound(this.Item)+1]=this.m_adicionar
+this.Item[UpperBound(this.Item)+1]=this.m_alterar
 this.Item[UpperBound(this.Item)+1]=this.m_excluir
 this.Item[UpperBound(this.Item)+1]=this.m_recuperar
+this.Item[UpperBound(this.Item)+1]=this.m_abandonar
 this.Item[UpperBound(this.Item)+1]=this.m_gravar
 this.Item[UpperBound(this.Item)+1]=this.m_exportar
-this.Item[UpperBound(this.Item)+1]=this.m_abandonar
-this.Item[UpperBound(this.Item)+1]=this.m_alterar
 end on
 
 on m_gravacao.destroy
 call super::destroy
 destroy(this.m_inserir)
 destroy(this.m_adicionar)
+destroy(this.m_alterar)
 destroy(this.m_excluir)
 destroy(this.m_recuperar)
+destroy(this.m_abandonar)
 destroy(this.m_gravar)
 destroy(this.m_exportar)
-destroy(this.m_abandonar)
-destroy(this.m_alterar)
 end on
 
 type m_inserir from menu within m_gravacao
@@ -319,8 +325,56 @@ return
 
 end event
 
+type m_alterar from menu within m_gravacao
+end type
+
+event clicked;VGS_menu = 'Alterar'
+
+parentWindow.TriggerEvent ('ue_alterar')
+
+return
+end event
+
+on m_alterar.create
+call super::create
+this.visible = false
+this.text = "Alterar"
+this.enabled = false
+this.toolbaritemvisible = false
+this.toolbaritemname = "Update2!"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_alterar.destroy
+call super::destroy
+end on
+
 type m_excluir from menu within m_gravacao
 end type
+
+event clicked;VGS_menu = 'Excluir'
+
+// chama evento para excluir linha 
+parentwindow.triggerEvent ('ue_Excluir')
+
+
+return 
+
+end event
 
 on m_excluir.create
 call super::create
@@ -349,18 +403,18 @@ on m_excluir.destroy
 call super::destroy
 end on
 
-event clicked;VGS_menu = 'Excluir'
-
-// chama evento para excluir linha 
-parentwindow.triggerEvent ('ue_Excluir')
-
-
-return 
-
-end event
-
 type m_recuperar from menu within m_gravacao
 end type
+
+event clicked;VGS_menu = 'Recuperar'
+
+// chama evento para recuperar os dados
+parentWindow.TriggerEvent ('ue_Recuperar')
+
+// o pronome parent é opcional. É sempre indicado que seja informado mas não obrigatório
+
+return
+end event
 
 on m_recuperar.create
 call super::create
@@ -389,15 +443,43 @@ on m_recuperar.destroy
 call super::destroy
 end on
 
-event clicked;VGS_menu = 'Recuperar'
+type m_abandonar from menu within m_gravacao
+end type
 
-// chama evento para recuperar os dados
-parentWindow.TriggerEvent ('ue_Recuperar')
+event clicked;VGS_menu = 'Abandonar'
 
-// o pronome parent é opcional. É sempre indicado que seja informado mas não obrigatório
+parentWindow.TriggerEvent ('ue_abandonar')
 
 return
 end event
+
+on m_abandonar.create
+call super::create
+this.tag = "abandonar"
+this.text = "Abandonar"
+this.microhelp = "abandonar"
+this.toolbaritemvisible = false
+this.toolbaritemname = "SelectAndRun!"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_abandonar.destroy
+call super::destroy
+end on
 
 type m_gravar from menu within m_gravacao
 end type
@@ -471,85 +553,10 @@ on m_exportar.destroy
 call super::destroy
 end on
 
-type m_abandonar from menu within m_gravacao
-end type
-
-on m_abandonar.create
-call super::create
-this.tag = "abandonar"
-this.text = "Abandonar"
-this.microhelp = "abandonar"
-this.toolbaritemvisible = false
-this.toolbaritemname = "SelectAndRun!"
-this.menutextcolor = 134217735
-this.menubackcolor = 134217732
-this.menuhighlightcolor = 134217741
-this.textsize = 8
-this.weight = 400
-this.facename = "Tahoma"
-this.titlebackcolor = 134217730
-this.bitmapbackcolor = 12632256
-this.menubitmaps = true
-this.titlegradient = true
-this.toolbartextcolor = 134217746
-this.toolbarbackcolor = 67108864
-this.toolbarhighlightcolor = 134217741
-this.toolbargradient = true
-this.bitmapgradient = true
-end on
-
-on m_abandonar.destroy
-call super::destroy
-end on
-
-event clicked;VGS_menu = 'Abandonar'
-
-parentWindow.TriggerEvent ('ue_abandonar')
-
-return
-end event
-
-type m_alterar from menu within m_gravacao
-end type
-
-event clicked;VGS_menu = 'Alterar'
-
-parentWindow.TriggerEvent ('ue_alterar')
-
-return
-end event
-
-on m_alterar.create
-call super::create
-this.visible = false
-this.text = "Alterar"
-this.enabled = false
-this.toolbaritemvisible = false
-this.toolbaritemname = "Update2!"
-this.menutextcolor = 134217735
-this.menubackcolor = 134217732
-this.menuhighlightcolor = 134217741
-this.textsize = 8
-this.weight = 400
-this.facename = "Tahoma"
-this.titlebackcolor = 134217730
-this.bitmapbackcolor = 12632256
-this.menubitmaps = true
-this.titlegradient = true
-this.toolbartextcolor = 134217746
-this.toolbarbackcolor = 67108864
-this.toolbarhighlightcolor = 134217741
-this.toolbargradient = true
-this.bitmapgradient = true
-end on
-
-on m_alterar.destroy
-call super::destroy
-end on
-
 type m_manutencao from menu within m_ancestral
 m_cadastrarproduto m_cadastrarproduto
 m_cadastrarfuncinário m_cadastrarfuncinário
+m_cadastrarvenda m_cadastrarvenda
 end type
 
 on m_manutencao.create
@@ -572,14 +579,17 @@ this.toolbargradient = true
 this.bitmapgradient = true
 this.m_cadastrarproduto=create m_cadastrarproduto
 this.m_cadastrarfuncinário=create m_cadastrarfuncinário
+this.m_cadastrarvenda=create m_cadastrarvenda
 this.Item[UpperBound(this.Item)+1]=this.m_cadastrarproduto
 this.Item[UpperBound(this.Item)+1]=this.m_cadastrarfuncinário
+this.Item[UpperBound(this.Item)+1]=this.m_cadastrarvenda
 end on
 
 on m_manutencao.destroy
 call super::destroy
 destroy(this.m_cadastrarproduto)
 destroy(this.m_cadastrarfuncinário)
+destroy(this.m_cadastrarvenda)
 end on
 
 type m_cadastrarproduto from menu within m_manutencao
@@ -644,8 +654,40 @@ on m_cadastrarfuncinário.destroy
 call super::destroy
 end on
 
+type m_cadastrarvenda from menu within m_manutencao
+end type
+
+on m_cadastrarvenda.create
+call super::create
+this.text = "Cadastrar Venda"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cadastrarvenda.destroy
+call super::destroy
+end on
+
+event clicked;
+OpenSheetWithParm(w_cadastro_venda, Mid(This.Text,5) + ',' + This.ClassName(), w_mdi_ancestral, 0, Layered!)
+end event
+
 type m_consulta from menu within m_ancestral
 m_produtosemestoque m_produtosemestoque
+m_funcionário m_funcionário
 end type
 
 on m_consulta.create
@@ -667,12 +709,15 @@ this.toolbarhighlightcolor = 134217741
 this.toolbargradient = true
 this.bitmapgradient = true
 this.m_produtosemestoque=create m_produtosemestoque
+this.m_funcionário=create m_funcionário
 this.Item[UpperBound(this.Item)+1]=this.m_produtosemestoque
+this.Item[UpperBound(this.Item)+1]=this.m_funcionário
 end on
 
 on m_consulta.destroy
 call super::destroy
 destroy(this.m_produtosemestoque)
+destroy(this.m_funcionário)
 end on
 
 type m_produtosemestoque from menu within m_consulta
@@ -801,6 +846,36 @@ this.bitmapgradient = true
 end on
 
 on m_pormarca.destroy
+call super::destroy
+end on
+
+type m_funcionário from menu within m_consulta
+end type
+
+event clicked;OpenSheetWithParm(w_consulta_funcionario, Mid(This.Text,5) + ',' + This.ClassName(), w_mdi_ancestral, 0, Layered!)
+end event
+
+on m_funcionário.create
+call super::create
+this.text = "Funcionário"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_funcionário.destroy
 call super::destroy
 end on
 

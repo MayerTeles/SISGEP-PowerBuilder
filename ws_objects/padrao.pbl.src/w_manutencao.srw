@@ -51,6 +51,7 @@ boolean ib_AjustarAlturaDw = false
 
 
 end variables
+
 forward prototypes
 public function integer of_arearegulo (integer lado, integer altura)
 public function integer wf_janela ()
