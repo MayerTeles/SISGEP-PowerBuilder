@@ -10,6 +10,7 @@ global uo_produto uo_produto
 
 forward prototypes
 public function long of_proximo ()
+public function decimal of_retorna_valor (integer p_cod_produto)
 end prototypes
 
 public function long of_proximo ();long vll_Cod_produto
@@ -30,6 +31,19 @@ SELECT
 		
 	return vll_Cod_Produto + 1
 	
+end function
+
+public function decimal of_retorna_valor (integer p_cod_produto);decimal vldValor
+
+SELECT
+	preco
+INTO
+	:vldValor
+FROM produto
+WHERE cod_produto = :p_cod_produto
+USING SQLCA;
+
+Return vldValor
 end function
 
 on uo_produto.create
