@@ -83,7 +83,8 @@ dw_manutencao.SetItem(1,'produto_cod_produto',vllret)
 dw_manutencao.object.produto_cod_produto.protect = true
 end event
 
-event ue_gravar;call super::ue_gravar;dw_get.Object.cod_produto.protect = 0
+event ue_gravar;call super::ue_gravar;// campo código do produto protegido
+dw_get.Object.cod_produto.protect = 0
 end event
 
 event ue_aposgravacao;call super::ue_aposgravacao;long vllRet
