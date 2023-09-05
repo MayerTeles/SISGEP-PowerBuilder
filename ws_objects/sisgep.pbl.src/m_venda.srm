@@ -1,0 +1,291 @@
+﻿$PBExportHeader$m_venda.srm
+forward
+global type m_venda from m_ancestral
+end type
+end forward
+
+global type m_venda from m_ancestral
+end type
+global m_venda m_venda
+
+on m_venda.create
+m_venda=this
+call super::create
+this.text = "m_venda"
+end on
+
+on m_venda.destroy
+call super::destroy
+end on
+
+type m_arquivo from m_ancestral`m_arquivo within m_venda
+end type
+
+on m_arquivo.create
+call super::create
+end on
+
+on m_arquivo.destroy
+call super::destroy
+end on
+
+type m_sair from m_ancestral`m_sair within m_arquivo
+end type
+
+on m_sair.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_sair.destroy
+call super::destroy
+end on
+
+type m_gravacao from m_ancestral`m_gravacao within m_venda
+end type
+
+on m_gravacao.create
+call super::create
+end on
+
+on m_gravacao.destroy
+call super::destroy
+end on
+
+type m_inserir from m_ancestral`m_inserir within m_gravacao
+end type
+
+on m_inserir.create
+call super::create
+end on
+
+on m_inserir.destroy
+call super::destroy
+end on
+
+type m_adicionar from m_ancestral`m_adicionar within m_gravacao
+end type
+
+on m_adicionar.create
+call super::create
+this.tag = "AdicionarAlt + F1"
+this.text = "Adicionar~tAlt+F1"
+this.shortcut = 624
+this.microhelp = "AdicionarAlt + F1"
+this.toolbaritemvisible = true
+this.toolbaritemtext = "AdicionarAlt + F1"
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_adicionar.destroy
+call super::destroy
+end on
+
+type m_alterar from m_ancestral`m_alterar within m_gravacao
+end type
+
+on m_alterar.create
+call super::create
+this.tag = "Alterar Alt+F2"
+this.text = "Alterar~tAlt+F2"
+this.enabled = true
+this.shortcut = 625
+this.microhelp = "Alterar Alt+F2"
+this.toolbaritemtext = "Alterar Alt+F2"
+this.mergeoption = windowmenu!
+end on
+
+on m_alterar.destroy
+call super::destroy
+end on
+
+type m_excluir from m_ancestral`m_excluir within m_gravacao
+end type
+
+on m_excluir.create
+call super::create
+this.tag = "Excluir Alt+F3"
+this.text = "Excluir~tAlt+F3"
+this.shortcut = 626
+this.microhelp = "Excluir Alt+F3"
+this.toolbaritemvisible = true
+this.toolbaritemname = "Delete!"
+this.toolbaritemtext = "Excluir Alt+F3"
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_excluir.destroy
+call super::destroy
+end on
+
+type m_recuperar from m_ancestral`m_recuperar within m_gravacao
+end type
+
+on m_recuperar.create
+call super::create
+this.tag = "Recuperar Alt+F4"
+this.text = "Recuperar~tAlt+F4"
+this.shortcut = 627
+this.microhelp = "Recuperar Alt+F4"
+this.toolbaritemname = "Retrieve1!"
+this.toolbaritemtext = "RecuperarAlt+F4"
+this.mergeoption = windowmenu!
+end on
+
+on m_recuperar.destroy
+call super::destroy
+end on
+
+type m_abandonar from m_ancestral`m_abandonar within m_gravacao
+end type
+
+on m_abandonar.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemspace = 8
+this.toolbaritemdown = true
+end on
+
+on m_abandonar.destroy
+call super::destroy
+end on
+
+type m_gravar from m_ancestral`m_gravar within m_gravacao
+end type
+
+on m_gravar.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritemname = "Save!"
+this.toolbaritemdown = true
+this.mergeoption = windowmenu!
+end on
+
+on m_gravar.destroy
+call super::destroy
+end on
+
+type m_exportar from m_ancestral`m_exportar within m_gravacao
+end type
+
+on m_exportar.create
+call super::create
+this.mergeoption = windowmenu!
+end on
+
+on m_exportar.destroy
+call super::destroy
+end on
+
+type m_manutencao from m_ancestral`m_manutencao within m_venda
+end type
+
+on m_manutencao.create
+call super::create
+end on
+
+on m_manutencao.destroy
+call super::destroy
+end on
+
+type m_cadastrarproduto from m_ancestral`m_cadastrarproduto within m_manutencao
+end type
+
+on m_cadastrarproduto.create
+call super::create
+end on
+
+on m_cadastrarproduto.destroy
+call super::destroy
+end on
+
+type m_cadastrarfuncinário from m_ancestral`m_cadastrarfuncinário within m_manutencao
+end type
+
+on m_cadastrarfuncinário.create
+call super::create
+end on
+
+on m_cadastrarfuncinário.destroy
+call super::destroy
+end on
+
+type m_cadastrarvenda from m_ancestral`m_cadastrarvenda within m_manutencao
+end type
+
+on m_cadastrarvenda.create
+call super::create
+end on
+
+on m_cadastrarvenda.destroy
+call super::destroy
+end on
+
+type m_consulta from m_ancestral`m_consulta within m_venda
+end type
+
+on m_consulta.create
+call super::create
+end on
+
+on m_consulta.destroy
+call super::destroy
+end on
+
+type m_produtosemestoque from m_ancestral`m_produtosemestoque within m_consulta
+end type
+
+on m_produtosemestoque.create
+call super::create
+end on
+
+on m_produtosemestoque.destroy
+call super::destroy
+end on
+
+type m_porcódigo from m_ancestral`m_porcódigo within m_produtosemestoque
+end type
+
+on m_porcódigo.create
+call super::create
+end on
+
+on m_porcódigo.destroy
+call super::destroy
+end on
+
+type m_pornome from m_ancestral`m_pornome within m_produtosemestoque
+end type
+
+on m_pornome.create
+call super::create
+end on
+
+on m_pornome.destroy
+call super::destroy
+end on
+
+type m_pormarca from m_ancestral`m_pormarca within m_produtosemestoque
+end type
+
+on m_pormarca.create
+call super::create
+end on
+
+on m_pormarca.destroy
+call super::destroy
+end on
+
+type m_funcionário from m_ancestral`m_funcionário within m_consulta
+end type
+
+on m_funcionário.create
+call super::create
+end on
+
+on m_funcionário.destroy
+call super::destroy
+end on
+
